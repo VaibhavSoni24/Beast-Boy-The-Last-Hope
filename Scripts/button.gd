@@ -11,7 +11,9 @@ extends TextureButton
 
 @export var glow_color := Color(1.0, 1.0, 1.0)
 
-# Pulse control
+@onready var focus_sound = $"UI Sound/Focus"
+@onready var click_sound = $"UI Sound/Click"
+
 @export var pulse_speed := 2.0
 @export var pulse_strength := 0.03
 
@@ -67,6 +69,7 @@ func _set_hover():
 	_is_hovered = true
 	_target_scale = scale_hover
 	_target_glow = glow_hover
+	focus_sound.play()
 	if mat:
 		mat.set_shader_parameter("animate", 1.0)
 
@@ -75,6 +78,7 @@ func _set_pressed():
 	_is_hovered = true
 	_target_scale = scale_hover
 	_target_glow = glow_pressed
+	click_sound.play()
 	if mat:
 		mat.set_shader_parameter("animate", 1.0)
 		

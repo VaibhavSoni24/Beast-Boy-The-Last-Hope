@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://8iq2ktrm5hla" path="res://Scenes/Parents/button.tscn" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://bekc724p8xoqa" path="res://Assets/Main/options.png" id="6_16hvj"]
 [ext_resource type="Script" uid="uid://775jk1v7ftrt" path="res://Scripts/Main/start_button.gd" id="6_vr1f0"]
+[ext_resource type="Shader" uid="uid://0k2dyhs8r86r" path="res://Shaders/button.gdshader" id="7_ujyyl"]
 [ext_resource type="Texture2D" uid="uid://dafpbc15m7ht0" path="res://Assets/Main/achievements.png" id="7_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://f8qrjf3pogfj" path="res://Assets/Main/credits.png" id="8_t1dhk"]
 [ext_resource type="Script" uid="uid://b4swjrtuis620" path="res://Scripts/Main/options_button.gd" id="8_vr1f0"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bu1rk5g7dno7e" path="res://Scripts/Main/quit_button.gd" id="14_vtepg"]
 [ext_resource type="Texture2D" uid="uid://2nb0a865xk77" path="res://Assets/Main/version.png" id="16_m3bi6"]
 [ext_resource type="Texture2D" uid="uid://h3nsmbpiirvl" path="res://Assets/Main/name.png" id="17_wyh8j"]
+[ext_resource type="AudioStream" uid="uid://dqrdnssskh6uf" path="res://Assets/Sound/The Sound of Hope.mp3" id="19_mkpwh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48xlc"]
 
@@ -59,6 +61,56 @@ shader_parameter/glow_strength = 1.4
 shader_parameter/glow_size = 3.0
 shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/time_scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkpwh"]
+shader = ExtResource("7_ujyyl")
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.2
+shader_parameter/flicker_strength = 0.04
+shader_parameter/animate = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4nkqq"]
+shader = ExtResource("7_ujyyl")
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.2
+shader_parameter/flicker_strength = 0.04
+shader_parameter/animate = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehtkc"]
+shader = ExtResource("7_ujyyl")
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.2
+shader_parameter/flicker_strength = 0.04
+shader_parameter/animate = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dk6o"]
+shader = ExtResource("7_ujyyl")
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.2
+shader_parameter/flicker_strength = 0.04
+shader_parameter/animate = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jr6u5"]
+shader = ExtResource("7_ujyyl")
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.2
+shader_parameter/flicker_strength = 0.04
+shader_parameter/animate = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wyh8j"]
 shader = ExtResource("3_ce3w2")
@@ -111,6 +163,7 @@ offset_bottom = 1056.0
 scale = Vector2(0.9, 0.9)
 
 [node name="StartGame" parent="Menu" unique_id=386263900 instance=ExtResource("5_n45e2")]
+material = SubResource("ShaderMaterial_mkpwh")
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitGame")
 focus_neighbor_bottom = NodePath("../Options")
@@ -118,6 +171,7 @@ script = ExtResource("6_vr1f0")
 game_scene = "res://scenes/game.tscn"
 
 [node name="Options" parent="Menu" unique_id=304274685 instance=ExtResource("5_n45e2")]
+material = SubResource("ShaderMaterial_4nkqq")
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartGame")
 focus_neighbor_bottom = NodePath("../Achievements")
@@ -126,6 +180,7 @@ script = ExtResource("8_vr1f0")
 game_scene = "res://scenes/game.tscn"
 
 [node name="Achievements" parent="Menu" unique_id=1108540069 instance=ExtResource("5_n45e2")]
+material = SubResource("ShaderMaterial_ehtkc")
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Credits")
@@ -134,6 +189,7 @@ script = ExtResource("10_t1dhk")
 game_scene = "res://scenes/game.tscn"
 
 [node name="Credits" parent="Menu" unique_id=1238352475 instance=ExtResource("5_n45e2")]
+material = SubResource("ShaderMaterial_6dk6o")
 layout_mode = 2
 focus_neighbor_top = NodePath("../Achievements")
 focus_neighbor_bottom = NodePath("../QuitGame")
@@ -142,6 +198,7 @@ script = ExtResource("12_5egv6")
 game_scene = "res://scenes/game.tscn"
 
 [node name="QuitGame" parent="Menu" unique_id=1870129596 instance=ExtResource("5_n45e2")]
+material = SubResource("ShaderMaterial_jr6u5")
 layout_mode = 2
 focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../StartGame")
@@ -166,3 +223,10 @@ offset_right = 2020.0
 offset_bottom = 1100.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_wyh8j")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=328367508]
+stream = ExtResource("19_mkpwh")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true

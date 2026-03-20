@@ -3,6 +3,8 @@
 [ext_resource type="Shader" uid="uid://0k2dyhs8r86r" path="res://Shaders/button.gdshader" id="1_8fokl"]
 [ext_resource type="Texture2D" uid="uid://cncogha8krtkj" path="res://Assets/Main/start.png" id="1_bu4ff"]
 [ext_resource type="Script" uid="uid://b0ti83vmdnek2" path="res://Scripts/button.gd" id="1_ewod6"]
+[ext_resource type="AudioStream" uid="uid://dxsva21h7ixyq" path="res://Assets/Sound/focus.mp3" id="4_bkr8l"]
+[ext_resource type="AudioStream" uid="uid://dtq5ion8tg3kc" path="res://Assets/Sound/click.mp3" id="5_av4du"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8fokl"]
 shader = ExtResource("1_8fokl")
@@ -20,16 +22,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("1_bu4ff")
 script = ExtResource("1_ewod6")
-scale_normal = null
-scale_hover = null
-scale_speed = null
-glow_normal = null
-glow_hover = null
-glow_pressed = null
-glow_speed = null
-glow_color = null
-pulse_speed = null
-pulse_strength = null
+
+[node name="UI Sound" type="Node" parent="." unique_id=1365054920]
+
+[node name="Focus" type="AudioStreamPlayer" parent="UI Sound" unique_id=18708323]
+stream = ExtResource("4_bkr8l")
+bus = &"UI"
+
+[node name="Click" type="AudioStreamPlayer" parent="UI Sound" unique_id=1534559039]
+stream = ExtResource("5_av4du")
+bus = &"UI"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

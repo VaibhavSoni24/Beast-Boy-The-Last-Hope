@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqrdnssskh6uf"
+path="res://.godot/imported/The Sound of Hope.mp3-5438f78292a11517814624116cc5e118.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/The Sound of Hope.mp3"
+dest_files=["res://.godot/imported/The Sound of Hope.mp3-5438f78292a11517814624116cc5e118.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

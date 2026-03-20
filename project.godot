@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Beast Boy : The Last Hope"
+config/version="1.0.0"
 run/main_scene="uid://cvqk0bsoj2hf7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://cl18uuqvps70t"
