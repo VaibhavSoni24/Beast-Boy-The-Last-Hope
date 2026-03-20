@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://8iq2ktrm5hla"]
+
+[ext_resource type="Shader" uid="uid://0k2dyhs8r86r" path="res://Shaders/button.gdshader" id="1_8fokl"]
+[ext_resource type="Texture2D" uid="uid://cncogha8krtkj" path="res://Assets/Main/start.png" id="1_bu4ff"]
+[ext_resource type="Script" uid="uid://b0ti83vmdnek2" path="res://Scripts/button.gd" id="1_ewod6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fokl"]
+shader = ExtResource("1_8fokl")
+shader_parameter/glow_strength = 1.0
+shader_parameter/glow_size = 2.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.2
+shader_parameter/flicker_strength = 0.04
+shader_parameter/animate = 0.0
+
+[node name="Button" type="TextureButton" unique_id=386263900]
+material = SubResource("ShaderMaterial_8fokl")
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_bu4ff")
+script = ExtResource("1_ewod6")
+scale_normal = null
+scale_hover = null
+scale_speed = null
+glow_normal = null
+glow_hover = null
+glow_pressed = null
+glow_speed = null
+glow_color = null
+pulse_speed = null
+pulse_strength = null
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
