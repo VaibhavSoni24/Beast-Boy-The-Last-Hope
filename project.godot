@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Beast Boy : The Last Hope"
+run/main_scene="uid://cvqk0bsoj2hf7"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/image="uid://emb63ognyl77"
+boot_splash/image="uid://cl18uuqvps70t"
 config/icon="res://Assets/Main/icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [physics]
 
