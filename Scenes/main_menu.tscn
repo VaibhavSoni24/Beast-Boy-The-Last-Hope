@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://clrnxr5o6jimw" path="res://Scripts/Main/achievements_button.gd" id="10_t1dhk"]
 [ext_resource type="Script" uid="uid://dvla1pwg12yj7" path="res://Scripts/Main/credits_button.gd" id="12_5egv6"]
 [ext_resource type="Script" uid="uid://bu1rk5g7dno7e" path="res://Scripts/Main/quit_button.gd" id="14_vtepg"]
+[ext_resource type="Texture2D" uid="uid://2nb0a865xk77" path="res://Assets/Main/version.png" id="16_m3bi6"]
+[ext_resource type="Texture2D" uid="uid://h3nsmbpiirvl" path="res://Assets/Main/name.png" id="17_wyh8j"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48xlc"]
 
@@ -55,6 +57,20 @@ sub_emitter_frequency = 100.0
 shader = ExtResource("3_ce3w2")
 shader_parameter/glow_strength = 1.4
 shader_parameter/glow_size = 3.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/time_scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wyh8j"]
+shader = ExtResource("3_ce3w2")
+shader_parameter/glow_strength = 1.6
+shader_parameter/glow_size = 4.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/time_scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujyyl"]
+shader = ExtResource("3_ce3w2")
+shader_parameter/glow_strength = 1.6
+shader_parameter/glow_size = 4.0
 shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/time_scale = 2.0
 
@@ -132,3 +148,21 @@ focus_neighbor_bottom = NodePath("../StartGame")
 texture_normal = ExtResource("9_5egv6")
 script = ExtResource("14_vtepg")
 game_scene = "res://scenes/game.tscn"
+
+[node name="Version" type="TextureRect" parent="." unique_id=1552178393]
+material = SubResource("ShaderMaterial_wyh8j")
+offset_left = 200.0
+offset_top = 1000.0
+offset_right = 240.0
+offset_bottom = 1040.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_m3bi6")
+
+[node name="Name" type="TextureRect" parent="." unique_id=802103774]
+material = SubResource("ShaderMaterial_ujyyl")
+offset_left = 1620.0
+offset_top = 1000.0
+offset_right = 2020.0
+offset_bottom = 1100.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_wyh8j")
