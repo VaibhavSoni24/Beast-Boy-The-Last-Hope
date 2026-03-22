@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bu1rk5g7dno7e" path="res://Scripts/Main/quit_button.gd" id="14_vtepg"]
 [ext_resource type="Texture2D" uid="uid://2nb0a865xk77" path="res://Assets/Main/version.png" id="16_m3bi6"]
 [ext_resource type="Texture2D" uid="uid://h3nsmbpiirvl" path="res://Assets/Main/name.png" id="17_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://bmobasc5bjmn7" path="res://Assets/Main/name2.png" id="19_4nkqq"]
 [ext_resource type="AudioStream" uid="uid://dqrdnssskh6uf" path="res://Assets/Sound/The Sound of Hope.mp3" id="19_mkpwh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48xlc"]
@@ -223,6 +224,15 @@ offset_right = 2020.0
 offset_bottom = 1100.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_wyh8j")
+
+[node name="Name2" type="TextureRect" parent="." unique_id=1263299122]
+material = SubResource("ShaderMaterial_ujyyl")
+offset_left = 1626.0
+offset_top = 1020.0
+offset_right = 2026.0
+offset_bottom = 1120.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_4nkqq")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=328367508]
 stream = ExtResource("19_mkpwh")
