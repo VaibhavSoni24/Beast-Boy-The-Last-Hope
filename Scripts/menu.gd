@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var start_button = $MainMenu/Menu/StartGame
+@onready var game_button = $OptionsMenu/Menu/Game
+@onready var language_button = $Game/LanguageButton
+@onready var credits_button = $Game/CreditsButton
 
 @onready var main_menu = $MainMenu
 @onready var start = $StartMenu
@@ -14,6 +17,9 @@ extends Node2D
 @onready var video = $Video
 @onready var controller = $Controller
 @onready var keyboard = $Keyboard
+
+@onready var notice = $Game/Notice
+@onready var timer = $Game/Timer
 
 @onready var music = $Music
 
@@ -56,6 +62,7 @@ func show_start():
 	hide_options()
 
 func show_options():
+	game_button.grab_focus()
 	main_menu.hide()
 	start.hide()
 	options.show()
@@ -92,12 +99,14 @@ func show_quit():
 	hide_options()
 
 func show_games():
+	language_button.grab_focus()
 	hide_main_menu()
 	game.show()
 	audio.hide()
 	video.hide()
 	controller.hide()
 	keyboard.hide()
+	notice.hide()
 
 func show_audio():
 	hide_main_menu()
@@ -160,3 +169,24 @@ func _on_controller_button_down() -> void:
 
 func _on_keyboard_button_down() -> void:
 	show_keyboard()
+
+func _on_language_button_button_down() -> void:
+	notice.show()
+	timer.start()
+
+func _on_timer_timeout() -> void:
+	notice.hide()
+
+func _on_credits_button_button_down() -> void:
+	pass # Replace with changing the global variable to true or false for credits showing.
+
+func _on_achievements_button_button_down() -> void:
+	notice.show()
+	timer.start()
+
+func _on_reset_game_button_down() -> void:
+	credits_button.button_pressed = true
+
+func _on_back_game_button_down() -> void:
+	game.hide()
+	options.show()

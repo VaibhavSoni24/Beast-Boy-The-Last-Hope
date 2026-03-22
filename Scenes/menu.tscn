@@ -23,9 +23,17 @@
 [ext_resource type="Texture2D" uid="uid://hly265ibvj7a" path="res://Assets/Main/back.png" id="21_i37ye"]
 [ext_resource type="Texture2D" uid="uid://cg4ewkdfycuw3" path="res://Assets/Main/gameoptions.png" id="22_owyel"]
 [ext_resource type="Texture2D" uid="uid://dr1735pimrulf" path="res://Assets/Main/audiooptions.png" id="23_h63v2"]
+[ext_resource type="Texture2D" uid="uid://0axfrlfny1li" path="res://Assets/Main/languageoption.png" id="23_pde1v"]
+[ext_resource type="Texture2D" uid="uid://b0605xh5ppwto" path="res://Assets/Main/creditsoption.png" id="24_747ic"]
 [ext_resource type="Texture2D" uid="uid://deoqf6bosdppp" path="res://Assets/Main/videooptions.png" id="24_l6llh"]
+[ext_resource type="Texture2D" uid="uid://dgqxas0vkvgbd" path="res://Assets/Main/english.png" id="24_x0760"]
 [ext_resource type="Texture2D" uid="uid://cu18wrhv4qo6q" path="res://Assets/Main/controlleroptions.png" id="25_ocger"]
+[ext_resource type="Texture2D" uid="uid://673al5nu6se2" path="res://Assets/Main/achievementsoption.png" id="25_x0760"]
+[ext_resource type="Texture2D" uid="uid://bu4ulf04f37mx" path="res://Assets/Main/on.png" id="26_48g0d"]
 [ext_resource type="Texture2D" uid="uid://ds8wpgag82y1q" path="res://Assets/Main/keyboardoptions.png" id="26_i37ye"]
+[ext_resource type="Texture2D" uid="uid://r8ty27utvobn" path="res://Assets/Main/off.png" id="27_lvy56"]
+[ext_resource type="Texture2D" uid="uid://c34k27pyjv5n6" path="res://Assets/Main/reset.png" id="28_lvy56"]
+[ext_resource type="Texture2D" uid="uid://bt7ow286mk58o" path="res://Assets/Main/notsupportedyet.png" id="30_ygxe1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48xlc"]
 
@@ -230,22 +238,32 @@ scale = Vector2(0.9, 0.9)
 
 [node name="Game" parent="OptionsMenu/Menu" unique_id=389331366 instance=ExtResource("7_i37ye")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../Audio")
 texture_normal = ExtResource("16_3p34a")
 
 [node name="Audio" parent="OptionsMenu/Menu" unique_id=372007679 instance=ExtResource("7_i37ye")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Game")
+focus_neighbor_bottom = NodePath("../Video")
 texture_normal = ExtResource("17_owyel")
 
 [node name="Video" parent="OptionsMenu/Menu" unique_id=253012740 instance=ExtResource("7_i37ye")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Audio")
+focus_neighbor_bottom = NodePath("../Controller")
 texture_normal = ExtResource("18_h63v2")
 
 [node name="Controller" parent="OptionsMenu/Menu" unique_id=1553556378 instance=ExtResource("7_i37ye")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Video")
+focus_neighbor_bottom = NodePath("../Keyboard")
 texture_normal = ExtResource("19_l6llh")
 
 [node name="Keyboard" parent="OptionsMenu/Menu" unique_id=625862963 instance=ExtResource("7_i37ye")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Controller")
+focus_neighbor_bottom = NodePath("../../Back")
 texture_normal = ExtResource("20_ocger")
 
 [node name="Back" parent="OptionsMenu" unique_id=444435950 instance=ExtResource("7_i37ye")]
@@ -255,6 +273,8 @@ offset_top = 900.0
 offset_right = 1180.0
 offset_bottom = 1000.0
 scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../Menu/Keyboard")
+focus_neighbor_bottom = NodePath("../Menu/Game")
 texture_normal = ExtResource("21_i37ye")
 
 [node name="AchievementsMenu" type="Control" parent="." unique_id=1979749952]
@@ -296,25 +316,113 @@ texture = ExtResource("22_owyel")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Menu" type="VBoxContainer" parent="Game" unique_id=1041407385]
+[node name="Language" type="TextureRect" parent="Game" unique_id=1869810194]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 350.0
+offset_right = 700.0
+offset_bottom = 450.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("23_pde1v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LanguageButton" parent="Game" unique_id=143085658 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 350.0
+offset_right = 1620.0
+offset_bottom = 450.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../BackGame")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+texture_normal = ExtResource("24_x0760")
+
+[node name="Credits" type="TextureRect" parent="Game" unique_id=1516970479]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 450.0
+offset_right = 700.0
+offset_bottom = 550.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("24_747ic")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CreditsButton" parent="Game" unique_id=1346775496 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 450.0
+offset_right = 1620.0
+offset_bottom = 550.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../LanguageButton")
+focus_neighbor_bottom = NodePath("../AchievementsButton")
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("27_lvy56")
+texture_pressed = ExtResource("26_48g0d")
+
+[node name="Achievements" type="TextureRect" parent="Game" unique_id=1211740870]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 550.0
+offset_right = 700.0
+offset_bottom = 650.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("25_x0760")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AchievementsButton" parent="Game" unique_id=1720788288 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 550.0
+offset_right = 1620.0
+offset_bottom = 650.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../ResetGame")
+texture_normal = ExtResource("27_lvy56")
+
+[node name="ResetGame" parent="Game" unique_id=1501173062 instance=ExtResource("7_i37ye")]
 layout_mode = 0
 offset_left = 780.0
-offset_top = 340.0
+offset_top = 800.0
 offset_right = 1180.0
-offset_bottom = 856.0
+offset_bottom = 900.0
 scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../AchievementsButton")
+focus_neighbor_bottom = NodePath("../BackGame")
+texture_normal = ExtResource("28_lvy56")
 
-[node name="Button" parent="Game/Menu" unique_id=1117318551 instance=ExtResource("7_i37ye")]
-layout_mode = 2
-
-[node name="Back" parent="Game" unique_id=617114447 instance=ExtResource("7_i37ye")]
+[node name="BackGame" parent="Game" unique_id=617114447 instance=ExtResource("7_i37ye")]
 layout_mode = 0
 offset_left = 780.0
 offset_top = 900.0
 offset_right = 1180.0
 offset_bottom = 1000.0
 scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../ResetGame")
+focus_neighbor_bottom = NodePath("../LanguageButton")
 texture_normal = ExtResource("21_i37ye")
+
+[node name="Notice" type="TextureRect" parent="Game" unique_id=1723111834]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 50.0
+offset_top = 1000.0
+offset_right = 450.0
+offset_bottom = 1100.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_ygxe1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="Game" unique_id=1694228665]
 
 [node name="Audio" type="Control" parent="." unique_id=931691751]
 visible = false
@@ -402,3 +510,10 @@ stretch_mode = 5
 [connection signal="button_down" from="OptionsMenu/Menu/Video" to="." method="_on_video_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Controller" to="." method="_on_controller_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Keyboard" to="." method="_on_keyboard_button_down"]
+[connection signal="button_down" from="OptionsMenu/Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="Game/LanguageButton" to="." method="_on_language_button_button_down"]
+[connection signal="button_down" from="Game/CreditsButton" to="." method="_on_credits_button_button_down"]
+[connection signal="button_down" from="Game/AchievementsButton" to="." method="_on_achievements_button_button_down"]
+[connection signal="button_down" from="Game/ResetGame" to="." method="_on_reset_game_button_down"]
+[connection signal="button_down" from="Game/BackGame" to="." method="_on_back_game_button_down"]
+[connection signal="timeout" from="Game/Timer" to="." method="_on_timer_timeout"]
