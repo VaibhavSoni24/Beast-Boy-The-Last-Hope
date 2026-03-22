@@ -34,6 +34,13 @@
 [ext_resource type="Texture2D" uid="uid://r8ty27utvobn" path="res://Assets/Main/off.png" id="27_lvy56"]
 [ext_resource type="Texture2D" uid="uid://c34k27pyjv5n6" path="res://Assets/Main/reset.png" id="28_lvy56"]
 [ext_resource type="Texture2D" uid="uid://bt7ow286mk58o" path="res://Assets/Main/notsupportedyet.png" id="30_ygxe1"]
+[ext_resource type="Texture2D" uid="uid://be4q1lei05vw0" path="res://Assets/Main/master.png" id="32_ki2a1"]
+[ext_resource type="Texture2D" uid="uid://dal2ivqduhuot" path="res://Assets/Main/enemy.png" id="33_flyo0"]
+[ext_resource type="Texture2D" uid="uid://nln2nurlo06c" path="res://Assets/Main/music.png" id="33_lx18h"]
+[ext_resource type="PackedScene" uid="uid://cx1b4a408qh0g" path="res://Scenes/Parents/slider.tscn" id="33_mucp4"]
+[ext_resource type="Texture2D" uid="uid://djbmupbeaugjf" path="res://Assets/Main/ui.png" id="34_mucp4"]
+[ext_resource type="Texture2D" uid="uid://c70d2lvjnf4pt" path="res://Assets/Main/gun.png" id="36_v3l5l"]
+[ext_resource type="Texture2D" uid="uid://cckmy0gifb4bh" path="res://Assets/Main/sound.png" id="37_qpa3c"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48xlc"]
 
@@ -299,6 +306,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Game" type="Control" parent="." unique_id=825187156]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -425,7 +433,6 @@ stretch_mode = 5
 [node name="Timer" type="Timer" parent="Game" unique_id=1694228665]
 
 [node name="Audio" type="Control" parent="." unique_id=931691751]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -442,6 +449,147 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("23_h63v2")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Master" type="TextureRect" parent="Audio" unique_id=28384004]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 280.0
+offset_right = 700.0
+offset_bottom = 380.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("32_ki2a1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MasterSlider" parent="Audio" unique_id=1249291131 instance=ExtResource("33_mucp4")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 280.0
+offset_right = 1420.0
+offset_bottom = 330.0
+
+[node name="Music" type="TextureRect" parent="Audio" unique_id=944003348]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 360.0
+offset_right = 700.0
+offset_bottom = 460.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("33_lx18h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MusicSlider" parent="Audio" unique_id=937453427 instance=ExtResource("33_mucp4")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 360.0
+offset_right = 1420.0
+offset_bottom = 410.0
+bus_name = "Music"
+
+[node name="UI" type="TextureRect" parent="Audio" unique_id=1530509140]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 440.0
+offset_right = 700.0
+offset_bottom = 540.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("34_mucp4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UISlider" parent="Audio" unique_id=1828702749 instance=ExtResource("33_mucp4")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 440.0
+offset_right = 1420.0
+offset_bottom = 490.0
+bus_name = "UI"
+
+[node name="Enemy" type="TextureRect" parent="Audio" unique_id=413112087]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 520.0
+offset_right = 700.0
+offset_bottom = 620.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("33_flyo0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnemySlider" parent="Audio" unique_id=867863009 instance=ExtResource("33_mucp4")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 520.0
+offset_right = 1420.0
+offset_bottom = 570.0
+bus_name = "Enemy"
+
+[node name="Gun" type="TextureRect" parent="Audio" unique_id=994984245]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 600.0
+offset_right = 700.0
+offset_bottom = 700.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("36_v3l5l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GunSlider" parent="Audio" unique_id=556182924 instance=ExtResource("33_mucp4")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 600.0
+offset_right = 1420.0
+offset_bottom = 650.0
+bus_name = "Gun"
+
+[node name="Sound" type="TextureRect" parent="Audio" unique_id=897410801]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 300.0
+offset_top = 680.0
+offset_right = 700.0
+offset_bottom = 780.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("37_qpa3c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SoundSlider" parent="Audio" unique_id=764413922 instance=ExtResource("33_mucp4")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 680.0
+offset_right = 1420.0
+offset_bottom = 730.0
+bus_name = "Sound"
+
+[node name="ResetAudio" parent="Audio" unique_id=1441989051 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 800.0
+offset_right = 1180.0
+offset_bottom = 900.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../AchievementsButton")
+focus_neighbor_bottom = NodePath("../BackAudio")
+texture_normal = ExtResource("28_lvy56")
+
+[node name="BackAudio" parent="Audio" unique_id=305338018 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 900.0
+offset_right = 1180.0
+offset_bottom = 1000.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../ResetAudio")
+focus_neighbor_bottom = NodePath("../LanguageButton")
+texture_normal = ExtResource("21_i37ye")
 
 [node name="Video" type="Control" parent="." unique_id=1024942713]
 visible = false
@@ -517,3 +665,5 @@ stretch_mode = 5
 [connection signal="button_down" from="Game/ResetGame" to="." method="_on_reset_game_button_down"]
 [connection signal="button_down" from="Game/BackGame" to="." method="_on_back_game_button_down"]
 [connection signal="timeout" from="Game/Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Audio/ResetAudio" to="." method="_on_reset_audio_button_down"]
+[connection signal="button_down" from="Audio/BackAudio" to="." method="_on_back_audio_button_down"]

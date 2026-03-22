@@ -18,15 +18,22 @@ extends Node2D
 @onready var controller = $Controller
 @onready var keyboard = $Keyboard
 
+@onready var master = $Audio/MasterSlider
+@onready var music = $Audio/MusicSlider
+@onready var ui = $Audio/UISlider
+@onready var enemy = $Audio/EnemySlider
+@onready var gun = $Audio/GunSlider
+@onready var sound = $Audio/SoundSlider
+
 @onready var notice = $Game/Notice
 @onready var timer = $Game/Timer
 
-@onready var music = $Music
+@onready var music_player = $Music
 
 func _ready():
 	show_main()
 	start_button.grab_focus()
-	music.play()
+	music_player.play()
 
 func hide_options():
 	game.hide()
@@ -189,4 +196,16 @@ func _on_reset_game_button_down() -> void:
 
 func _on_back_game_button_down() -> void:
 	game.hide()
+	options.show()
+
+func _on_reset_audio_button_down() -> void:
+	master.value = 1
+	music.value = 1
+	ui.value = 1
+	enemy.value = 1
+	gun.value = 1
+	sound.value = 1
+
+func _on_back_audio_button_down() -> void:
+	audio.hide()
 	options.show()
