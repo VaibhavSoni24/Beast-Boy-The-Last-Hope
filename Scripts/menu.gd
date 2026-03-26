@@ -9,6 +9,12 @@ extends Node2D
 @onready var vsync_button = $"Video/V-SyncButton"
 @onready var antialising_button = $Video/AntiAliasingButton
 @onready var back_controller = $Controller/BackController
+@onready var back_keyboard = $Keyboard/BackKeyboard
+@onready var master_slider = $Audio/MasterSlider
+@onready var no = $QuitMenu/No
+@onready var back_start = $StartMenu/BackStart
+@onready var back_achievements = $AchievementsMenu/BackAchievements
+@onready var back_credits = $CreditsMenu/BackCredits
 
 @onready var main_menu = $MainMenu
 @onready var start = $StartMenu
@@ -39,7 +45,6 @@ extends Node2D
 
 func _ready():
 	show_main()
-	start_button.grab_focus()
 	music_player.play()
 
 func hide_options():
@@ -58,6 +63,7 @@ func hide_main_menu():
 	quit.hide()
 
 func show_main():
+	start_button.grab_focus()
 	main_menu.show()
 	start.hide()
 	options.hide()
@@ -67,6 +73,7 @@ func show_main():
 	hide_options()
 
 func show_start():
+	back_start.grab_focus()
 	main_menu.hide()
 	start.show()
 	options.hide()
@@ -86,6 +93,7 @@ func show_options():
 	hide_options()
 
 func show_achievements():
+	back_achievements.grab_focus()
 	main_menu.hide()
 	start.hide()
 	options.hide()
@@ -95,6 +103,7 @@ func show_achievements():
 	hide_options()
 
 func show_credits():
+	back_credits.grab_focus()
 	main_menu.hide()
 	start.hide()
 	options.hide()
@@ -104,6 +113,7 @@ func show_credits():
 	hide_options()
 
 func show_quit():
+	no.grab_focus()
 	main_menu.hide()
 	start.hide()
 	options.hide()
@@ -123,6 +133,7 @@ func show_games():
 	game_notice.hide()
 
 func show_audio():
+	master_slider.grab_focus()
 	hide_main_menu()
 	game.hide()
 	audio.show()
@@ -150,6 +161,7 @@ func show_controller():
 	keyboard.hide()
 
 func show_keyboard():
+	back_keyboard.grab_focus()
 	hide_main_menu()
 	game.hide()
 	audio.hide()
@@ -274,3 +286,36 @@ func _on_back_controller_button_down() -> void:
 	controller.hide()
 	options.show()
 	game_button.grab_focus()
+
+func _on_back_keyboard_button_down() -> void:
+	keyboard.hide()
+	options.show()
+	game_button.grab_focus()
+
+func _on_back_options_button_down() -> void:
+	start_button.grab_focus()
+	options.hide()
+	main_menu.show()
+
+func _on_yes_button_down() -> void:
+	get_tree().quit()
+
+func _on_no_button_down() -> void:
+	start_button.grab_focus()
+	quit.hide()
+	main_menu.show()
+
+func _on_back_start_button_down() -> void:
+	start_button.grab_focus()
+	start.hide()
+	main_menu.show()
+
+func _on_back_achievements_button_down() -> void:
+	start_button.grab_focus()
+	achievements.hide()
+	main_menu.show()
+
+func _on_back_credits_button_down() -> void:
+	start_button.grab_focus()
+	credits.hide()
+	main_menu.show()

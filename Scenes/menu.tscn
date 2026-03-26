@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bekc724p8xoqa" path="res://Assets/Main/options.png" id="10_pde1v"]
 [ext_resource type="Texture2D" uid="uid://dafpbc15m7ht0" path="res://Assets/Main/achievements.png" id="12_x0760"]
 [ext_resource type="Texture2D" uid="uid://f8qrjf3pogfj" path="res://Assets/Main/credits.png" id="14_48g0d"]
+[ext_resource type="Texture2D" uid="uid://ccim33biolj3y" path="res://Assets/Main/starttitle.png" id="15_je088"]
 [ext_resource type="Texture2D" uid="uid://dns300bmu8oqb" path="res://Assets/Main/quit.png" id="16_0idt7"]
 [ext_resource type="Texture2D" uid="uid://sbdq11jgp8ub" path="res://Assets/Main/game.png" id="16_3p34a"]
 [ext_resource type="Texture2D" uid="uid://b1xu6fhgm1p4u" path="res://Assets/Main/audio.png" id="17_owyel"]
@@ -21,12 +22,18 @@
 [ext_resource type="Texture2D" uid="uid://pcdkxjl8q371" path="res://Assets/Main/keyboard.png" id="20_ocger"]
 [ext_resource type="Texture2D" uid="uid://vbtc17bf03da" path="res://Assets/Main/optionsmenu.png" id="21_3p34a"]
 [ext_resource type="Texture2D" uid="uid://hly265ibvj7a" path="res://Assets/Main/back.png" id="21_i37ye"]
+[ext_resource type="Texture2D" uid="uid://t4siuney7wlv" path="res://Assets/Main/areyousure.png" id="22_2t718"]
 [ext_resource type="Texture2D" uid="uid://cg4ewkdfycuw3" path="res://Assets/Main/gameoptions.png" id="22_owyel"]
+[ext_resource type="Texture2D" uid="uid://b404n17haft18" path="res://Assets/Main/yes.png" id="23_2sctt"]
 [ext_resource type="Texture2D" uid="uid://dr1735pimrulf" path="res://Assets/Main/audiooptions.png" id="23_h63v2"]
 [ext_resource type="Texture2D" uid="uid://0axfrlfny1li" path="res://Assets/Main/languageoption.png" id="23_pde1v"]
+[ext_resource type="Texture2D" uid="uid://b6kqwnasxvhld" path="res://Assets/Main/achievementstitle.png" id="23_tyk3f"]
 [ext_resource type="Texture2D" uid="uid://b0605xh5ppwto" path="res://Assets/Main/creditsoption.png" id="24_747ic"]
 [ext_resource type="Texture2D" uid="uid://deoqf6bosdppp" path="res://Assets/Main/videooptions.png" id="24_l6llh"]
+[ext_resource type="Texture2D" uid="uid://s7273b5maakm" path="res://Assets/Main/creditstitle.png" id="24_m8nev"]
+[ext_resource type="Texture2D" uid="uid://cd1kbrhbja3fo" path="res://Assets/Main/no.png" id="24_oc4uc"]
 [ext_resource type="Texture2D" uid="uid://dgqxas0vkvgbd" path="res://Assets/Main/english.png" id="24_x0760"]
+[ext_resource type="Texture2D" uid="uid://brec4sf5okbkf" path="res://Assets/Main/quittitle.png" id="25_fwrfa"]
 [ext_resource type="Texture2D" uid="uid://cu18wrhv4qo6q" path="res://Assets/Main/controlleroptions.png" id="25_ocger"]
 [ext_resource type="Texture2D" uid="uid://673al5nu6se2" path="res://Assets/Main/achievementsoption.png" id="25_x0760"]
 [ext_resource type="Texture2D" uid="uid://bu4ulf04f37mx" path="res://Assets/Main/on.png" id="26_48g0d"]
@@ -226,6 +233,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Title" type="TextureRect" parent="StartMenu" unique_id=241612334]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 600.0
+offset_top = -30.0
+offset_right = 2040.0
+offset_bottom = 780.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_je088")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackStart" parent="StartMenu" unique_id=97079408 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 900.0
+offset_right = 1180.0
+offset_bottom = 1000.0
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("21_i37ye")
+
 [node name="OptionsMenu" type="Control" parent="." unique_id=551031682]
 visible = false
 layout_mode = 3
@@ -255,7 +283,7 @@ scale = Vector2(0.9, 0.9)
 
 [node name="Game" parent="OptionsMenu/Menu" unique_id=389331366 instance=ExtResource("7_i37ye")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_top = NodePath("../../BackOptions")
 focus_neighbor_bottom = NodePath("../Audio")
 texture_normal = ExtResource("16_3p34a")
 
@@ -280,10 +308,10 @@ texture_normal = ExtResource("19_l6llh")
 [node name="Keyboard" parent="OptionsMenu/Menu" unique_id=625862963 instance=ExtResource("7_i37ye")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Controller")
-focus_neighbor_bottom = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../../BackOptions")
 texture_normal = ExtResource("20_ocger")
 
-[node name="Back" parent="OptionsMenu" unique_id=444435950 instance=ExtResource("7_i37ye")]
+[node name="BackOptions" parent="OptionsMenu" unique_id=444435950 instance=ExtResource("7_i37ye")]
 layout_mode = 0
 offset_left = 780.0
 offset_top = 900.0
@@ -301,6 +329,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Title" type="TextureRect" parent="AchievementsMenu" unique_id=1048032778]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 600.0
+offset_top = -30.0
+offset_right = 2040.0
+offset_bottom = 780.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_tyk3f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackAchievements" parent="AchievementsMenu" unique_id=1577561886 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 900.0
+offset_right = 1180.0
+offset_bottom = 1000.0
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("21_i37ye")
+
 [node name="CreditsMenu" type="Control" parent="." unique_id=1798777070]
 visible = false
 layout_mode = 3
@@ -308,12 +357,79 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Title" type="TextureRect" parent="CreditsMenu" unique_id=1079611938]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 600.0
+offset_top = -30.0
+offset_right = 2040.0
+offset_bottom = 780.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_m8nev")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackCredits" parent="CreditsMenu" unique_id=906967456 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 900.0
+offset_right = 1180.0
+offset_bottom = 1000.0
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("21_i37ye")
+
 [node name="QuitMenu" type="Control" parent="." unique_id=1242380304]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Title" type="TextureRect" parent="QuitMenu" unique_id=2092826924]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 600.0
+offset_top = -30.0
+offset_right = 2040.0
+offset_bottom = 780.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_fwrfa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Notice" type="TextureRect" parent="QuitMenu" unique_id=1925511278]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 600.0
+offset_top = 250.0
+offset_right = 2040.0
+offset_bottom = 1060.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_2t718")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Yes" parent="QuitMenu" unique_id=989302511 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 650.0
+offset_right = 950.0
+offset_bottom = 750.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_left = NodePath("../No")
+focus_neighbor_right = NodePath("../No")
+texture_normal = ExtResource("23_2sctt")
+
+[node name="No" parent="QuitMenu" unique_id=1740411343 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 650.0
+offset_right = 1410.0
+offset_bottom = 750.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_left = NodePath("../Yes")
+focus_neighbor_right = NodePath("../Yes")
+texture_normal = ExtResource("24_oc4uc")
 
 [node name="Game" type="Control" parent="." unique_id=825187156]
 visible = false
@@ -479,6 +595,8 @@ offset_left = 1220.0
 offset_top = 280.0
 offset_right = 1420.0
 offset_bottom = 330.0
+focus_neighbor_top = NodePath("../BackAudio")
+focus_neighbor_bottom = NodePath("../MusicSlider")
 
 [node name="Music" type="TextureRect" parent="Audio" unique_id=944003348]
 material = SubResource("ShaderMaterial_n45e2")
@@ -498,6 +616,8 @@ offset_left = 1220.0
 offset_top = 360.0
 offset_right = 1420.0
 offset_bottom = 410.0
+focus_neighbor_top = NodePath("../MasterSlider")
+focus_neighbor_bottom = NodePath("../UISlider")
 bus_name = "Music"
 
 [node name="UI" type="TextureRect" parent="Audio" unique_id=1530509140]
@@ -518,6 +638,8 @@ offset_left = 1220.0
 offset_top = 440.0
 offset_right = 1420.0
 offset_bottom = 490.0
+focus_neighbor_top = NodePath("../MusicSlider")
+focus_neighbor_bottom = NodePath("../EnemySlider")
 bus_name = "UI"
 
 [node name="Enemy" type="TextureRect" parent="Audio" unique_id=413112087]
@@ -538,6 +660,8 @@ offset_left = 1220.0
 offset_top = 520.0
 offset_right = 1420.0
 offset_bottom = 570.0
+focus_neighbor_top = NodePath("../UISlider")
+focus_neighbor_bottom = NodePath("../GunSlider")
 bus_name = "Enemy"
 
 [node name="Gun" type="TextureRect" parent="Audio" unique_id=994984245]
@@ -558,6 +682,8 @@ offset_left = 1220.0
 offset_top = 600.0
 offset_right = 1420.0
 offset_bottom = 650.0
+focus_neighbor_top = NodePath("../EnemySlider")
+focus_neighbor_bottom = NodePath("../SoundSlider")
 bus_name = "Gun"
 
 [node name="Sound" type="TextureRect" parent="Audio" unique_id=897410801]
@@ -578,6 +704,8 @@ offset_left = 1220.0
 offset_top = 680.0
 offset_right = 1420.0
 offset_bottom = 730.0
+focus_neighbor_top = NodePath("../GunSlider")
+focus_neighbor_bottom = NodePath("../ResetAudio")
 bus_name = "Sound"
 
 [node name="ResetAudio" parent="Audio" unique_id=1441989051 instance=ExtResource("7_i37ye")]
@@ -587,7 +715,7 @@ offset_top = 800.0
 offset_right = 1180.0
 offset_bottom = 900.0
 scale = Vector2(0.9, 0.9)
-focus_neighbor_top = NodePath("../AchievementsButton")
+focus_neighbor_top = NodePath("../SoundSlider")
 focus_neighbor_bottom = NodePath("../BackAudio")
 texture_normal = ExtResource("28_lvy56")
 
@@ -599,7 +727,7 @@ offset_right = 1180.0
 offset_bottom = 1000.0
 scale = Vector2(0.9, 0.9)
 focus_neighbor_top = NodePath("../ResetAudio")
-focus_neighbor_bottom = NodePath("../LanguageButton")
+focus_neighbor_bottom = NodePath("../MasterSlider")
 texture_normal = ExtResource("21_i37ye")
 
 [node name="Video" type="Control" parent="." unique_id=1024942713]
@@ -864,16 +992,45 @@ texture = ExtResource("26_i37ye")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Instructions" type="TextureRect" parent="Keyboard" unique_id=100808590]
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 0
+offset_left = 600.0
+offset_top = -30.0
+offset_right = 2040.0
+offset_bottom = 780.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_i37ye")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackKeyboard" parent="Keyboard" unique_id=1616358542 instance=ExtResource("7_i37ye")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 900.0
+offset_right = 1180.0
+offset_bottom = 1000.0
+scale = Vector2(0.9, 0.9)
+focus_neighbor_top = NodePath("../ResetAudio")
+focus_neighbor_bottom = NodePath("../LanguageButton")
+texture_normal = ExtResource("21_i37ye")
+
 [connection signal="button_down" from="MainMenu/Menu/StartGame" to="." method="_on_start_game_button_down"]
 [connection signal="button_down" from="MainMenu/Menu/Options" to="." method="_on_options_button_down"]
 [connection signal="button_down" from="MainMenu/Menu/Achievements" to="." method="_on_achievements_button_down"]
 [connection signal="button_down" from="MainMenu/Menu/Credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="MainMenu/Menu/QuitGame" to="." method="_on_quit_game_button_down"]
+[connection signal="button_down" from="StartMenu/BackStart" to="." method="_on_back_start_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Game" to="." method="_on_game_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Audio" to="." method="_on_audio_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Video" to="." method="_on_video_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Controller" to="." method="_on_controller_button_down"]
 [connection signal="button_down" from="OptionsMenu/Menu/Keyboard" to="." method="_on_keyboard_button_down"]
+[connection signal="button_down" from="OptionsMenu/BackOptions" to="." method="_on_back_options_button_down"]
+[connection signal="button_down" from="AchievementsMenu/BackAchievements" to="." method="_on_back_achievements_button_down"]
+[connection signal="button_down" from="CreditsMenu/BackCredits" to="." method="_on_back_credits_button_down"]
+[connection signal="button_down" from="QuitMenu/Yes" to="." method="_on_yes_button_down"]
+[connection signal="button_down" from="QuitMenu/No" to="." method="_on_no_button_down"]
 [connection signal="button_down" from="Game/LanguageButton" to="." method="_on_language_button_button_down"]
 [connection signal="button_down" from="Game/CreditsButton" to="." method="_on_credits_button_button_down"]
 [connection signal="button_down" from="Game/AchievementsButton" to="." method="_on_achievements_button_button_down"]
@@ -892,3 +1049,4 @@ stretch_mode = 5
 [connection signal="button_down" from="Video/BackVideo" to="." method="_on_back_video_button_down"]
 [connection signal="timeout" from="Video/Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="Controller/BackController" to="." method="_on_back_controller_button_down"]
+[connection signal="button_down" from="Keyboard/BackKeyboard" to="." method="_on_back_keyboard_button_down"]
