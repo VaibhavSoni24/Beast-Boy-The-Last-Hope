@@ -25,7 +25,6 @@ var time := 0.0
 
 @onready var mat := material as ShaderMaterial
 
-
 func _ready():
 	pivot_offset = size / 2
 	focus_mode = Control.FOCUS_ALL
@@ -34,7 +33,6 @@ func _ready():
 		mat.set_shader_parameter("glow_color", glow_color)
 
 	_set_idle()
-
 
 func _process(delta):
 	time += delta
@@ -54,7 +52,6 @@ func _process(delta):
 		g = lerp(g, _target_glow, delta * glow_speed)
 		mat.set_shader_parameter("glow_strength", g)
 
-
 # ===== STATES =====
 
 func _set_idle():
@@ -64,7 +61,6 @@ func _set_idle():
 	if mat:
 		mat.set_shader_parameter("animate", 0.0)
 
-
 func _set_hover():
 	_is_hovered = true
 	_target_scale = scale_hover
@@ -72,7 +68,6 @@ func _set_hover():
 	focus_sound.play()
 	if mat:
 		mat.set_shader_parameter("animate", 1.0)
-
 
 func _set_pressed():
 	_is_hovered = true
@@ -89,23 +84,18 @@ func _on_mouse_entered():
 	grab_focus()  # FORCE focus to follow mouse
 	_set_hover()
 
-
 func _on_mouse_exited():
 	if not has_focus():
 		_set_idle()
 
-
 func _on_focus_entered():
 	_set_hover()
-
 
 func _on_focus_exited():
 	_set_idle()
 
-
 func _on_button_down():
 	_set_pressed()
-
 
 func _on_button_up():
 	_set_hover()

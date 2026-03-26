@@ -4,6 +4,11 @@ extends Node2D
 @onready var game_button = $OptionsMenu/Menu/Game
 @onready var language_button = $Game/LanguageButton
 @onready var credits_button = $Game/CreditsButton
+@onready var resolution_button = $Video/ResolutionButton
+@onready var fullscreen_button = $Video/FullScreenButton
+@onready var vsync_button = $"Video/V-SyncButton"
+@onready var antialising_button = $Video/AntiAliasingButton
+@onready var back_controller = $Controller/BackController
 
 @onready var main_menu = $MainMenu
 @onready var start = $StartMenu
@@ -25,8 +30,10 @@ extends Node2D
 @onready var gun = $Audio/GunSlider
 @onready var sound = $Audio/SoundSlider
 
-@onready var notice = $Game/Notice
-@onready var timer = $Game/Timer
+@onready var game_notice = $Game/Notice
+@onready var game_timer = $Game/Timer
+@onready var video_notice = $Video/Notice
+@onready var video_timer = $Video/Timer
 
 @onready var music_player = $Music
 
@@ -113,7 +120,7 @@ func show_games():
 	video.hide()
 	controller.hide()
 	keyboard.hide()
-	notice.hide()
+	game_notice.hide()
 
 func show_audio():
 	hide_main_menu()
@@ -124,14 +131,17 @@ func show_audio():
 	keyboard.hide()
 
 func show_video():
+	resolution_button.grab_focus()
 	hide_main_menu()
 	game.hide()
 	audio.hide()
 	video.show()
 	controller.hide()
 	keyboard.hide()
+	video_notice.hide()
 
 func show_controller():
+	back_controller.grab_focus()
 	hide_main_menu()
 	game.hide()
 	audio.hide()
@@ -178,18 +188,19 @@ func _on_keyboard_button_down() -> void:
 	show_keyboard()
 
 func _on_language_button_button_down() -> void:
-	notice.show()
-	timer.start()
+	game_notice.show()
+	game_timer.start()
 
 func _on_timer_timeout() -> void:
-	notice.hide()
+	game_notice.hide()
+	video_notice.hide()
 
 func _on_credits_button_button_down() -> void:
 	pass # Replace with changing the global variable to true or false for credits showing.
 
 func _on_achievements_button_button_down() -> void:
-	notice.show()
-	timer.start()
+	game_notice.show()
+	game_timer.start()
 
 func _on_reset_game_button_down() -> void:
 	credits_button.button_pressed = true
@@ -197,6 +208,7 @@ func _on_reset_game_button_down() -> void:
 func _on_back_game_button_down() -> void:
 	game.hide()
 	options.show()
+	game_button.grab_focus()
 
 func _on_reset_audio_button_down() -> void:
 	master.value = 1
@@ -209,3 +221,56 @@ func _on_reset_audio_button_down() -> void:
 func _on_back_audio_button_down() -> void:
 	audio.hide()
 	options.show()
+	game_button.grab_focus()
+
+func _on_resolution_button_button_down() -> void:
+	video_notice.show()
+	video_timer.start()
+
+func _on_full_screen_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		# FULLSCREEN (exclusive)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		# WINDOWED (normal app window)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+		# IMPORTANT: restore decorations (title bar, buttons)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+
+func _on_v_sync_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		# V-SYNC ON
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		# V-SYNC OFF
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func _on_quality_button_button_down() -> void:
+	video_notice.show()
+	video_timer.start()
+
+func _on_frame_rate_button_button_down() -> void:
+	video_notice.show()
+	video_timer.start()
+
+func _on_anti_aliasing_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		get_viewport().msaa_2d = Viewport.MSAA_2X
+	else:
+		get_viewport().msaa_2d = Viewport.MSAA_DISABLED
+
+func _on_back_video_button_down() -> void:
+	video.hide()
+	options.show()
+	game_button.grab_focus()
+
+func _on_reset_video_button_down() -> void:
+	fullscreen_button.button_pressed = true
+	vsync_button.button_pressed = true
+	antialising_button.button_pressed = false
+
+func _on_back_controller_button_down() -> void:
+	controller.hide()
+	options.show()
+	game_button.grab_focus()
