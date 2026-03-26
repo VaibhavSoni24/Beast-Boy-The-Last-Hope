@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://xudfudcs0npf" path="res://Assets/Main/high.png" id="47_f55ex"]
 [ext_resource type="Texture2D" uid="uid://3gdvps5ylcjj" path="res://Assets/Main/60.png" id="49_2t718"]
 [ext_resource type="Texture2D" uid="uid://dy5ysuas8tq3r" path="res://Assets/Main/no_controller.png" id="50_f55ex"]
+[ext_resource type="Shader" uid="uid://dvdjqlh1llfda" path="res://Shaders/transition.gdshader" id="59_tyk3f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48xlc"]
 
@@ -114,6 +115,17 @@ shader_parameter/glow_strength = 1.6
 shader_parameter/glow_size = 4.0
 shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/time_scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8nev"]
+shader = ExtResource("59_tyk3f")
+shader_parameter/progress = 0.0
+shader_parameter/curtain_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0.92, 0.97, 1, 1)
+shader_parameter/slit_feather = 0.018
+shader_parameter/glow_width = 0.08
+shader_parameter/ray_strength = 0.2
+shader_parameter/ray_count = 46.0
+shader_parameter/ray_speed = 1.5
 
 [node name="Menu" type="Node2D" unique_id=32025511]
 script = ExtResource("1_d77ms")
@@ -1014,6 +1026,19 @@ scale = Vector2(0.9, 0.9)
 focus_neighbor_top = NodePath("../ResetAudio")
 focus_neighbor_bottom = NodePath("../LanguageButton")
 texture_normal = ExtResource("21_i37ye")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=809225612]
+visible = false
+
+[node name="Transition" type="ColorRect" parent="CanvasLayer" unique_id=860560828]
+z_index = 100
+material = SubResource("ShaderMaterial_m8nev")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="button_down" from="MainMenu/Menu/StartGame" to="." method="_on_start_game_button_down"]
 [connection signal="button_down" from="MainMenu/Menu/Options" to="." method="_on_options_button_down"]

@@ -43,7 +43,40 @@ extends Node2D
 
 @onready var music_player = $Music
 
+@onready var canvas = $CanvasLayer
+@onready var transition = $CanvasLayer/Transition
+@onready var transition_material: ShaderMaterial = transition.material as ShaderMaterial
+var _transition_progress := 0.0
+var is_transitioning = false
+
+var transition_progress: float:
+	get:
+		return _transition_progress
+	set(value):
+		_transition_progress = value
+		if is_instance_valid(transition_material):
+			transition_material.set_shader_parameter("progress", value)
+
+func transition_to(callback: Callable) -> void:
+	if is_transitioning:
+		return
+	is_transitioning = true
+	canvas.visible = true
+	await _play_transition(1.0) # close
+	callback.call()
+	await _play_transition(0.0) # open
+	canvas.visible = false
+	is_transitioning = false
+
+func _play_transition(target: float) -> void:
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "transition_progress", target, 0.28)
+	await tween.finished
+
 func _ready():
+	canvas.visible = false
+	transition_progress = 0.0
 	show_main()
 	music_player.play()
 
@@ -84,6 +117,11 @@ func show_start():
 
 func show_options():
 	game_button.grab_focus()
+	game.hide()
+	audio.hide()
+	video.hide()
+	controller.hide()
+	keyboard.hide()
 	main_menu.hide()
 	start.hide()
 	options.show()
@@ -170,34 +208,34 @@ func show_keyboard():
 	keyboard.show()
 
 func _on_start_game_button_down() -> void:
-	show_start()
+	transition_to(func(): show_start())
 
 func _on_options_button_down() -> void:
-	show_options()
+	transition_to(func(): show_options())
 
 func _on_achievements_button_down() -> void:
-	show_achievements()
+	transition_to(func(): show_achievements())
 
 func _on_credits_button_down() -> void:
-	show_credits()
+	transition_to(func(): show_credits())
 
 func _on_quit_game_button_down() -> void:
-	show_quit()
+	transition_to(func(): show_quit())
 
 func _on_game_button_down() -> void:
-	show_games()
+	transition_to(func(): show_games())
 
 func _on_audio_button_down() -> void:
-	show_audio()
+	transition_to(func(): show_audio())
 
 func _on_video_button_down() -> void:
-	show_video()
+	transition_to(func(): show_video())
 
 func _on_controller_button_down() -> void:
-	show_controller()
+	transition_to(func(): show_controller())
 
 func _on_keyboard_button_down() -> void:
-	show_keyboard()
+	transition_to(func(): show_keyboard())
 
 func _on_language_button_button_down() -> void:
 	game_notice.show()
@@ -218,9 +256,7 @@ func _on_reset_game_button_down() -> void:
 	credits_button.button_pressed = true
 
 func _on_back_game_button_down() -> void:
-	game.hide()
-	options.show()
-	game_button.grab_focus()
+	transition_to(func(): show_options())
 
 func _on_reset_audio_button_down() -> void:
 	master.value = 1
@@ -231,9 +267,7 @@ func _on_reset_audio_button_down() -> void:
 	sound.value = 1
 
 func _on_back_audio_button_down() -> void:
-	audio.hide()
-	options.show()
-	game_button.grab_focus()
+	transition_to(func(): show_options())
 
 func _on_resolution_button_button_down() -> void:
 	video_notice.show()
@@ -273,9 +307,7 @@ func _on_anti_aliasing_button_toggled(toggled_on: bool) -> void:
 		get_viewport().msaa_2d = Viewport.MSAA_DISABLED
 
 func _on_back_video_button_down() -> void:
-	video.hide()
-	options.show()
-	game_button.grab_focus()
+	transition_to(func(): show_options())
 
 func _on_reset_video_button_down() -> void:
 	fullscreen_button.button_pressed = true
@@ -283,39 +315,25 @@ func _on_reset_video_button_down() -> void:
 	antialising_button.button_pressed = false
 
 func _on_back_controller_button_down() -> void:
-	controller.hide()
-	options.show()
-	game_button.grab_focus()
+	transition_to(func(): show_options())
 
 func _on_back_keyboard_button_down() -> void:
-	keyboard.hide()
-	options.show()
-	game_button.grab_focus()
+	transition_to(func(): show_options())
 
 func _on_back_options_button_down() -> void:
-	start_button.grab_focus()
-	options.hide()
-	main_menu.show()
+	transition_to(func(): show_main())
 
 func _on_yes_button_down() -> void:
 	get_tree().quit()
 
 func _on_no_button_down() -> void:
-	start_button.grab_focus()
-	quit.hide()
-	main_menu.show()
+	transition_to(func(): show_main())
 
 func _on_back_start_button_down() -> void:
-	start_button.grab_focus()
-	start.hide()
-	main_menu.show()
+	transition_to(func(): show_main())
 
 func _on_back_achievements_button_down() -> void:
-	start_button.grab_focus()
-	achievements.hide()
-	main_menu.show()
+	transition_to(func(): show_main())
 
 func _on_back_credits_button_down() -> void:
-	start_button.grab_focus()
-	credits.hide()
-	main_menu.show()
+	transition_to(func(): show_main())
