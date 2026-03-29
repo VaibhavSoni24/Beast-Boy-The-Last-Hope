@@ -25,20 +25,26 @@ shape = SubResource("CapsuleShape3D_wwpn8")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1702715332]
 mesh = SubResource("CapsuleMesh_wwpn8")
 
-[node name="Camera" type="Node3D" parent="." unique_id=340602101 node_paths=PackedStringArray("character", "edge_spring_arm")]
+[node name="Camera" type="Node3D" parent="." unique_id=340602101 node_paths=PackedStringArray("character", "edge_spring_arm", "rear_spring_arm", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 script = ExtResource("2_p0r52")
 character = NodePath("..")
 edge_spring_arm = NodePath("EdgeSpringArm")
+rear_spring_arm = NodePath("EdgeSpringArm/RearSpringArm")
+camera = NodePath("EdgeSpringArm/RearSpringArm/Camera3D")
+camera_alignment_speed = 0.2
+aim_rear_spring_length = 0.5
+aim_edge_spring_length = 0.8
+aim_speed = 0.2
+aim_fov = 55.0
 
 [node name="EdgeSpringArm" type="SpringArm3D" parent="Camera" unique_id=1465063439]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 shape = SubResource("SphereShape3D_p0r52")
-spring_length = 0.5
 
 [node name="RearSpringArm" type="SpringArm3D" parent="Camera/EdgeSpringArm" unique_id=516637390]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.1855694e-08, 0, 0.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 shape = SubResource("SphereShape3D_vei72")
-spring_length = 1.5
+spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="Camera/EdgeSpringArm/RearSpringArm" unique_id=336648473]
