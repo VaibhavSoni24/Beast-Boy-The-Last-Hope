@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvqk0bsoj2hf7"]
 
-[ext_resource type="Script" uid="uid://dpwdu5dc85gkr" path="res://Scripts/menu.gd" id="1_d77ms"]
+[ext_resource type="Script" uid="uid://dpwdu5dc85gkr" path="res://Scripts/Main/menu.gd" id="1_d77ms"]
 [ext_resource type="Texture2D" uid="uid://ryfqxjuahclt" path="res://Assets/Main/main_menu.jpeg" id="2_3p34a"]
 [ext_resource type="Texture2D" uid="uid://b5awm1lhqlds4" path="res://Assets/Main/smoke_texture.png" id="3_owyel"]
 [ext_resource type="AudioStream" uid="uid://dqrdnssskh6uf" path="res://Assets/Sound/The Sound of Hope.mp3" id="4_h63v2"]
