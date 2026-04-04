@@ -37,6 +37,8 @@ aim_rear_spring_length = 0.5
 aim_edge_spring_length = 0.8
 aim_speed = 0.2
 aim_fov = 55.0
+sprint_fov = 90.0
+sprint_tween_speed = 0.5
 
 [node name="EdgeSpringArm" type="SpringArm3D" parent="Camera" unique_id=1465063439]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
