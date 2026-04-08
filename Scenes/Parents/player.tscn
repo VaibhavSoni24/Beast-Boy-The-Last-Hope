@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://cgm6vlgfvh1gr" path="res://Scripts/camera.gd" id="2_p0r52"]
 [ext_resource type="Script" uid="uid://dxx4qm2hx0l1h" path="res://Scripts/StateMachine/PlayerStateMachine/player_state_machine.gd" id="3_vei72"]
 [ext_resource type="Script" uid="uid://t0g24niod7q2" path="res://Scripts/StateMachine/PlayerStateMachine/States/idle.gd" id="4_516uf"]
-[ext_resource type="Script" uid="uid://dqo8idjrv4u2u" path="res://Scripts/StateMachine/PlayerStateMachine/States/walk.gd" id="5_eeksd"]
+[ext_resource type="Script" uid="uid://b548ufmyb14c7" path="res://Scripts/StateMachine/PlayerStateMachine/States/aim_idle.gd" id="5_u3500"]
 [ext_resource type="Script" uid="uid://dqet5d8vbvgnw" path="res://Scripts/StateMachine/PlayerStateMachine/States/run.gd" id="6_lucm3"]
 [ext_resource type="Script" uid="uid://ubmqphhfjs4g" path="res://Scripts/StateMachine/PlayerStateMachine/States/jump.gd" id="7_05ajc"]
-[ext_resource type="Script" uid="uid://ckrsnbufpifxq" path="res://Scripts/StateMachine/PlayerStateMachine/States/crouch.gd" id="8_5q8il"]
+[ext_resource type="Script" uid="uid://dbbgvv580cnx6" path="res://Scripts/StateMachine/PlayerStateMachine/States/sprint.gd" id="7_5q8il"]
+[ext_resource type="Script" uid="uid://wdvqathhr5xg" path="res://Scripts/StateMachine/PlayerStateMachine/States/aim_walk.gd" id="7_sqbli"]
+[ext_resource type="Script" uid="uid://dv1spdvbkm7kh" path="res://Scripts/StateMachine/PlayerStateMachine/States/sprint_jump.gd" id="9_05ajc"]
 [ext_resource type="Script" uid="uid://dg63d2quf72kd" path="res://Scripts/StateMachine/PlayerStateMachine/States/fall.gd" id="9_u3500"]
+[ext_resource type="Script" uid="uid://biypsry7ybgxt" path="res://Scripts/StateMachine/PlayerStateMachine/States/sprint_fall.gd" id="10_5q8il"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wwpn8"]
 radius = 0.8
@@ -65,17 +68,30 @@ start_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1828334616]
 script = ExtResource("4_516uf")
 
-[node name="Walk" type="Node" parent="StateMachine" unique_id=325598079]
-script = ExtResource("5_eeksd")
+[node name="AimIdle" type="Node" parent="StateMachine" unique_id=948996797]
+script = ExtResource("5_u3500")
 
 [node name="Run" type="Node" parent="StateMachine" unique_id=1049674984]
 script = ExtResource("6_lucm3")
 
+[node name="AimWalk" type="Node" parent="StateMachine" unique_id=165076703]
+script = ExtResource("7_sqbli")
+
+[node name="Sprint" type="Node" parent="StateMachine" unique_id=253522425]
+script = ExtResource("7_5q8il")
+
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1086472185]
 script = ExtResource("7_05ajc")
 
-[node name="Crouch" type="Node" parent="StateMachine" unique_id=668621345]
-script = ExtResource("8_5q8il")
-
 [node name="Fall" type="Node" parent="StateMachine" unique_id=253615040]
 script = ExtResource("9_u3500")
+
+[node name="SprintJump" type="Node" parent="StateMachine" unique_id=14179813]
+script = ExtResource("9_05ajc")
+
+[node name="SprintFall" type="Node" parent="StateMachine" unique_id=1937566193]
+script = ExtResource("10_5q8il")
+
+[connection signal="sprint_ended" from="StateMachine/Sprint" to="Camera" method="_on_sprint_ended"]
+[connection signal="sprint_started" from="StateMachine/Sprint" to="Camera" method="_on_sprint_sprint_started"]
+[connection signal="sprint_ended" from="StateMachine/SprintFall" to="Camera" method="_on_sprint_ended"]

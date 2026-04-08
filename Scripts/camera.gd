@@ -147,3 +147,9 @@ func exit_sprint() -> void:
 	camera_tween.tween_property(camera, "fov", default_fov, sprint_tween_speed)
 	camera_tween.tween_property(edge_spring_arm, "spring_length", default_edge_spring_arm_length * current_camera_alignment, aim_speed)
 	camera_tween.tween_property(rear_spring_arm, "spring_length", default_rear_spring_arm_length, aim_speed)
+
+func _on_sprint_sprint_started() -> void:
+	enter_sprint()
+
+func _on_sprint_ended() -> void:
+	exit_sprint()
