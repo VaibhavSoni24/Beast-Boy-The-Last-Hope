@@ -13,11 +13,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	current_state._state_input(event)
-
-func _physics_process(delta: float) -> void:
+	
+func _physics_process(delta: float) -> void: 
 	current_state._update(delta)
 
-func _create_state_map() -> void:
+func _create_state_map()->void:
 	for child: State in get_children():
 		child.finished.connect(_change_state)
 		state_map[child.name] = child
@@ -37,7 +37,7 @@ func _set_active(value: bool) -> void:
 func _change_state(state_name: String) -> void:
 	if not _active:
 		return
-	
+
 	current_state._exit()
 	current_state = state_map[state_name]
 	current_state._enter()

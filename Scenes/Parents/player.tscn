@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cgm6vlgfvh1gr" path="res://Scripts/camera.gd" id="2_p0r52"]
 [ext_resource type="Script" uid="uid://dxx4qm2hx0l1h" path="res://Scripts/StateMachine/PlayerStateMachine/player_state_machine.gd" id="3_vei72"]
 [ext_resource type="Script" uid="uid://t0g24niod7q2" path="res://Scripts/StateMachine/PlayerStateMachine/States/idle.gd" id="4_516uf"]
+[ext_resource type="Resource" uid="uid://druj7brfwlhfb" path="res://Resources/player_movement_stats.tres" id="4_sqbli"]
 [ext_resource type="Script" uid="uid://b548ufmyb14c7" path="res://Scripts/StateMachine/PlayerStateMachine/States/aim_idle.gd" id="5_u3500"]
 [ext_resource type="Script" uid="uid://dqet5d8vbvgnw" path="res://Scripts/StateMachine/PlayerStateMachine/States/run.gd" id="6_lucm3"]
 [ext_resource type="Script" uid="uid://ubmqphhfjs4g" path="res://Scripts/StateMachine/PlayerStateMachine/States/jump.gd" id="7_05ajc"]
@@ -42,13 +43,8 @@ character = NodePath("..")
 edge_spring_arm = NodePath("EdgeSpringArm")
 rear_spring_arm = NodePath("EdgeSpringArm/RearSpringArm")
 camera = NodePath("EdgeSpringArm/RearSpringArm/Camera3D")
-camera_alignment_speed = 0.2
-aim_rear_spring_length = 0.5
 aim_edge_spring_length = 0.8
 aim_speed = 0.5
-aim_fov = 55.0
-sprint_fov = 90.0
-sprint_tween_speed = 0.5
 
 [node name="EdgeSpringArm" type="SpringArm3D" parent="Camera" unique_id=1465063439]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -63,6 +59,7 @@ spring_length = 2.0
 
 [node name="StateMachine" type="Node" parent="." unique_id=1874986810 node_paths=PackedStringArray("start_state")]
 script = ExtResource("3_vei72")
+player_movement_stats = ExtResource("4_sqbli")
 start_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1828334616]
@@ -92,6 +89,10 @@ script = ExtResource("9_05ajc")
 [node name="SprintFall" type="Node" parent="StateMachine" unique_id=1937566193]
 script = ExtResource("10_5q8il")
 
+[connection signal="aim_entered" from="StateMachine/AimIdle" to="Camera" method="_on_aim_entered"]
+[connection signal="aim_exited" from="StateMachine/AimIdle" to="Camera" method="_on_aim_exited"]
+[connection signal="aim_entered" from="StateMachine/AimWalk" to="Camera" method="_on_aim_entered"]
+[connection signal="aim_exited" from="StateMachine/AimWalk" to="Camera" method="_on_aim_exited"]
 [connection signal="sprint_ended" from="StateMachine/Sprint" to="Camera" method="_on_sprint_ended"]
 [connection signal="sprint_started" from="StateMachine/Sprint" to="Camera" method="_on_sprint_sprint_started"]
 [connection signal="sprint_ended" from="StateMachine/SprintFall" to="Camera" method="_on_sprint_ended"]

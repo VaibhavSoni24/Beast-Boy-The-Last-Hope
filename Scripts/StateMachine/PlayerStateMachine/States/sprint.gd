@@ -5,6 +5,7 @@ signal sprint_ended
 
 func _enter() -> void:
 	sprint_started.emit()
+	return super._enter()
 
 func _state_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -16,7 +17,8 @@ func _state_input(event: InputEvent) -> void:
 
 func _update(delta: float) -> void:
 	set_direction()
-	calculate_velocity(SPRINT_SPEED, direction, delta)
+	calculate_velocity(sprint_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, delta)
+	direction_updated.emit(input_dir)
 	
 	sprint_remaining -= delta
 	
