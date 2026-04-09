@@ -73,7 +73,7 @@ func start_model_view_camera() -> void:
 	model_view_camera.current = true
 	model_view_camera.set_process(true)
 	model_view_camera.set_process_input(true)
-	
+
 func stop_model_view_camera() -> void:
 	camera.current = true
 	model_view_camera.current = false
