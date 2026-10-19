@@ -2,6 +2,36 @@
 .godot/
 /android/
 
-*.tmp
+# Exported binaries & build output
+build/
+builds/
+bin/
+*.apk
+*.aab
+*.exe
+*.dll
+*.so
+*.dylib
+*.pck
+*.zip
+*.tar.*
+*.dmg
+*.ipa
 
+# System and temporary files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.tmp
+*.bak
+*.swp
+*~
+*.log
+
+# IDE and Editor configurations
 .vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
