@@ -1,0 +1,61 @@
+name: "🐛 Bug Report"
+description: "Create a report to help us improve Beast Boy: The Last Hope"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please provide as much detail as possible to help reproduce and fix it.
+  - type: input
+    id: godot-version
+    attributes:
+      label: Godot Version
+      description: What version of Godot are you running?
+      placeholder: "e.g. Godot 4.6, Godot 4.4.stable"
+    validations:
+      required: true
+  - type: input
+    id: os-gpu
+    attributes:
+      label: Operating System & Hardware
+      description: What OS and GPU are you using?
+      placeholder: "e.g. Windows 11 64-bit, NVIDIA GeForce RTX 3060"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the behavior.
+      placeholder: |
+        1. Open scene '...'
+        2. Press '...'
+        3. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console Logs / Error Output
+      description: Copy and paste any Godot debugger errors, warnings, or console logs.
+      render: shell
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshots or Recordings
+      description: Drag and drop screenshots or videos showing the bug if applicable.

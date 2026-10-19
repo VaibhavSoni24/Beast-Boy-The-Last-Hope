@@ -1,0 +1,38 @@
+name: "💡 Feature Request"
+description: "Propose an idea or gameplay enhancement for Beast Boy: The Last Hope"
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an idea! Please share details about your proposed mechanic, feature, or improvement.
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of the feature or enhancement.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Motivation
+      description: Is your feature request related to a problem or limitation? (e.g. "It would improve locomotion flow if...")
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution / Implementation Idea
+      description: How do you envision this working in-game or within the code/scene architecture?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative mechanics or solutions you've considered.
+  - type: textarea
+    id: references
+    attributes:
+      label: Reference Material / Inspiration
+      description: Links to videos, screenshots, or mechanics from inspiring games (e.g. Hollow Knight, Super Mario, Resident Evil).
